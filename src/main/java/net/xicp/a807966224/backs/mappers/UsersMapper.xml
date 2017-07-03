@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="net.xicp.a807966224.backs.daos.UsersDao">
+	
+	<select id="findByUsername" resultType="net.xicp.a807966224.backs.beans.Users">
+		select users.id id,users.username username,users.password password,users.state state FROM users where users.username = #{username}
+	</select>
+	
+	<select id="findAuthsByUserid" resultType="net.xicp.a807966224.backs.beans.Authorities">
+		select authorities.authname authname from users,authorities,groups
+		where users.id = groups.user_id and authorities.id = groups.auth_id and users.id = #{id}
+	</select>
+
+    <select id="findMenusByUsername" resultType="net.xicp.a807966224.backs.beans.Authorities">
+		select menus.id,menuname,url,parent
+        from users,groups,ams,menus WHERE
+        users.id = groups.user_id and groups.auth_id = ams.auth_id
+        and ams.menu_id = menus.id and ams.type = 1
+        and users.username = #{username} and level = #{level} and users.state = '1'
+	</select>
+	
+	<select id="findAllUsers" resultType="net.xicp.a807966224.backs.beans.Users" >
+		select id,username,state from users order by id desc
+	</select>
+
+	<insert id="insert" parameterType="net.xicp.a807966224.backs.beans.Users" useGeneratedKeys="true" keyProperty="id" >
+		insert into users (username,password,state) values (#{username},#{password},#{state})
+	</insert>
+
+    <update id="update" parameterType="net.xicp.a807966224.backs.beans.Users" >
+        update users set username = #{username},password = #{password},state = #{state} where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="net.xicp.a807966224.backs.beans.Users" >
+        delete from users where id = #{id}
+    </delete>
+	
+	<insert id="insertG" parameterType="net.xicp.a807966224.backs.beans.Users" >
+		insert into groups (auth_id,user_id) 
+		values
+		(#{authId},#{userId})
+	</insert>
+	
+	<delete id="deleteG" parameterType="Long">
+		delete from groups where user_id = #{userId}
+	</delete>
+	
+	<select id="getUserHasAuthByUserId"  parameterType="Long" resultType="net.xicp.a807966224.backs.beans.Menu">
+	SELECT GROUP_CONCAT(LOWER(functions.funenname)) funenname,functions.menu_id menu_id FROM functions where functions.menu_id in (
+	select menus.id from menus where  menus.id in(
+	select ams.menu_id from ams,groups,users where ams.auth_id = groups.auth_id 
+	and users.id = groups.user_id and users.id = #{id}
+	)
+	) group by functions.menu_id
+	</select>
+	
+</mapper>

@@ -1,0 +1,9 @@
+[
+    {"name":"基础组件", "children":[
+        {"id":"base-navtab", "name":"Navtab", "target":"navtab", "url":"resources/bjui/html/base/navtab.jsp"},
+        {"id":"base-dialog", "name":"Dialog弹窗", "target":"navtab", "url":"resources/bjui/html/base/dialog.jsp"},
+        {"id":"base-alertmsg", "name":"alertmsg消息窗口", "target":"navtab", "url":"resources/bjui/html/base/alertmsg.jsp"},
+        {"id":"base-ajax", "name":"ajax相关", "target":"navtab", "url":"resources/bjui/html/base/ajax.jsp"},
+        {"id":"base-pagination", "name":"分页组件", "target":"navtab", "url":"resources/bjui/html/base/pagination.jsp"}
+    ]}
+]

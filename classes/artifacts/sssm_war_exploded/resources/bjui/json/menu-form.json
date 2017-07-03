@@ -1,0 +1,16 @@
+[
+    {"name":"表单相关", "children":[
+        {"id":"base-button", "name":"按钮", "target":"navtab", "url":"resources/bjui/html/form/button.jsp"},
+        {"id":"base-input", "name":"文本框", "target":"navtab", "url":"resources/bjui/html/form/input.jsp"},
+        {"id":"base-select", "name":"下拉选择框", "target":"navtab", "url":"resources/bjui/html/form/select.jsp"},
+        {"id":"base-checkbox", "name":"单选、复选框", "target":"navtab", "url":"resources/bjui/html/form/checkbox.jsp"},
+        {"id":"base-datepicker", "name":"日期选择器", "target":"navtab", "url":"resources/bjui/html/form/datepicker.jsp"},
+        {"id":"base-tags", "name":"Tags、自动完成", "target":"navtab", "url":"resources/bjui/html/form/tags.jsp"},
+        {"id":"base-suggest", "name":"Suggest", "target":"navtab", "url":"resources/bjui/html/form/suggest.jsp"},
+        {"id":"base-findgrid", "name":"FindGrid", "target":"navtab", "url":"resources/bjui/html/form/findgrid.jsp"},
+        {"id":"base-spinner", "name":"Spinner", "target":"navtab", "url":"resources/bjui/html/form/spinner.jsp"}
+    ]},
+    {"name":"综合应用", "children":[
+        {"id":"base-demo-form", "name":"表单示例", "target":"navtab", "url":"resources/bjui/html/form/form.jsp"}
+    ]}
+]

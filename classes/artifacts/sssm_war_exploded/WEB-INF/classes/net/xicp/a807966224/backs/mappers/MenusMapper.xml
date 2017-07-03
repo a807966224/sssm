@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="net.xicp.a807966224.backs.daos.MenusDao">
+	
+    <select id="findSubMenusByMenuid" resultType="net.xicp.a807966224.backs.beans.Authorities">
+		select menus.id,menuname,url,parent
+        from users,groups,ams,menus WHERE
+        users.id = groups.user_id and groups.auth_id = ams.auth_id
+        and ams.menu_id = menus.id
+        and parent = #{parent} and users.username = #{username} and users.state = '1' order by menus.id desc
+	</select>
+
+    <select id="findMenus" resultType="net.xicp.a807966224.backs.beans.Menu">
+        SELECT id,menuname name,url,parent pId,level FROM menus where level = -1
+        union
+        SELECT id,menuname name,url,parent pId,level FROM menus where level = 0
+        union
+        SELECT id,menuname name,url,parent pId,level FROM menus where level = 1
+    </select>
+
+    <select id="findOptionsByMenuid" resultType="net.xicp.a807966224.backs.beans.Menu">
+        <if test="level == -1">
+            select fun.id,fun.funchname,fun.funenname,(select menus.menuname from menus where menus.id = fun.menu_id) name from functions as fun order by fun.id desc
+        </if>
+        <if test="level == 0">
+            select fun.id,fun.funchname,fun.funenname,(select menus.menuname from menus where menus.id = fun.menu_id) name from functions as fun where fun.menu_id in (select id from menus where menus.parent = #{id}) order by fun.id desc
+        </if>
+        <if test="level == 1">
+            select fun.id,fun.funchname,fun.funenname,(select menus.menuname from menus where menus.id = fun.menu_id) name from functions as fun where fun.menu_id =#{id} order by fun.id desc
+        </if>
+    </select>
+
+</mapper>

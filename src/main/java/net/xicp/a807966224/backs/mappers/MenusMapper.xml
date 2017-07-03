@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="net.xicp.a807966224.backs.daos.MenusDao">
+	
+    <select id="findSubMenusByMenuid" resultType="net.xicp.a807966224.backs.beans.Authorities">
+		select menus.id,menuname,url,parent
+        from users,groups,ams,menus WHERE
+        users.id = groups.user_id and groups.auth_id = ams.auth_id
+        and ams.menu_id = menus.id and ams.type = 1
+        and parent = #{parent} and users.username = #{username} and users.state = '1' order by menus.id desc
+	</select>
+
+    <select id="findMenus" resultType="net.xicp.a807966224.backs.beans.Menu">
+        SELECT id,menuname name,url,parent pId,level FROM menus where level = 0
+        union
+        SELECT id,menuname name,url,parent pId,level FROM menus where level = 1
+        union
+        SELECT id,menuname name,url,parent pId,level FROM menus where level = 2
+    </select>
+
+    <select id="findOptionsByMenuid" resultType="net.xicp.a807966224.backs.beans.Menu">
+        <if test="level == 0 || level == null">
+            select fun.id,fun.funchname,fun.funenname,(select menus.menuname from menus where menus.id = fun.menu_id) name from functions as fun order by fun.id desc
+        </if>
+        <if test="level == 1">
+            select fun.id,fun.funchname,fun.funenname,(select menus.menuname from menus where menus.id = fun.menu_id) name from functions as fun where fun.menu_id in (select id from menus where menus.parent = #{id}) order by fun.id desc
+        </if>
+        <if test="level == 2">
+            select fun.id,fun.funchname,fun.funenname,(select menus.menuname from menus where menus.id = fun.menu_id) name from functions as fun where fun.menu_id =#{id} order by fun.id desc
+        </if>
+    </select>
+
+	<insert id="insert" parameterType="net.xicp.a807966224.backs.beans.Menu">
+		insert into menus (menuname,url,parent,level) 
+		values
+		(
+			#{name},
+			#{url},
+			#{pId},
+			#{level}
+		)
+	</insert>
+	
+	<insert id="insertOpt" parameterType="net.xicp.a807966224.backs.beans.Menu">
+		insert into functions (funchname,funenname,menu_id) 
+		values
+		(
+			#{funchname},
+			#{funenname},
+			#{menu_id}
+		)
+	</insert>
+	
+	<select id="getById" parameterType="net.xicp.a807966224.backs.beans.Menu" resultType="net.xicp.a807966224.backs.beans.Menu">
+		select id,url,parent pId,menuname name,level from menus where id = #{id}
+	</select>
+	
+	<select id="getOptById" parameterType="net.xicp.a807966224.backs.beans.Menu" resultType="net.xicp.a807966224.backs.beans.Menu">
+		select id,funchname,funenname,menu_id from functions where id = #{id}
+	</select>
+	
+	<update id="update" parameterType="net.xicp.a807966224.backs.beans.Menu">
+		update menus
+		set menuname = #{name},
+			url = #{url},
+			parent = #{pId},
+			level = #{level}
+		where id = #{id}
+	</update>
+	
+	<update id="updateOpt" parameterType="net.xicp.a807966224.backs.beans.Menu">
+		update functions
+		set funchname = #{funchname},
+			funenname = #{funenname},
+			menu_id = #{menu_id}
+		where id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="net.xicp.a807966224.backs.beans.Menu">
+		delete from menus
+		where id = #{id}
+	</delete>
+	
+	<delete id="deleteOpt" parameterType="net.xicp.a807966224.backs.beans.Menu">
+		delete from functions
+		where id = #{id}
+	</delete>
+
+
+	<select id="getCheckTreeOpts" resultType="net.xicp.a807966224.backs.beans.Menu">
+	SELECT id,menuname name,url,parent pId,level,'1' type,'true' open FROM menus where level = 0
+	union
+	SELECT id,menuname name,url,parent pId,level,'1' type,'true' open FROM menus where level = 1
+	union
+	SELECT id,menuname name,url,parent pId,level,'1' type,'true' open FROM menus where level = 2
+	UNION
+	select (100000+id) id,functions.funchname name,'' url,functions.menu_id pId,'3' level,'2' type,'true' open from functions where functions.menu_id in (SELECT id FROM menus where level = 2)
+	</select>
+
+</mapper>
