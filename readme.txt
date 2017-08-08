@@ -7,3 +7,6 @@
 =================================================
 2017-08-08  ¸üĞÂÒ»²¨
 
+git rm -rf --cached .
+git add .
+git commit -m "update gitignore"
