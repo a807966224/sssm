@@ -4,8 +4,9 @@
 .project
 .settings
 .externalToolBuilders/
-/.idea
+.idea/*
 /*.iml
 eD
 /classes
 /build
+/*.class

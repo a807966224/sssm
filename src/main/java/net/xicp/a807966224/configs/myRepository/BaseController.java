@@ -42,7 +42,11 @@ public class BaseController implements Serializable{
 		Cache cache = cacheManager.getCache("userCache");
 		Element element = cache.get(menuId);
 		String authNames = (String)element.getObjectValue();
-		System.out.println(authNames);
 		return authNames;
 	}
+
+    public String getCurrentUsername() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
+
 }
