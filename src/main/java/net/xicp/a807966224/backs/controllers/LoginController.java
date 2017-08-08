@@ -62,7 +62,6 @@ public class LoginController extends BaseController{
 
 	@RequestMapping("/Access_Denied")
 	public ModelAndView access_Denied(){
-        System.out.println(123123);
 		return new ModelAndView("blps/accessDenied");
 	}
 
