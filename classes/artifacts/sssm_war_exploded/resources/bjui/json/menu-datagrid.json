@@ -1,9 +1,0 @@
-[
-    {"name":"Datagrid", "children":[
-        {"id":"datagrid-jquery", "name":"示例-jQuery API", "target":"navtab", "url":"resources/bjui/html/datagrid/datagrid.jsp"},
-        {"id":"datagrid-data", "name":"示例-Data API", "target":"navtab", "url":"resources/bjui/html/datagrid/datagrid-dom.jsp"},
-        {"id":"datagrid-tree", "name":"树状Datagrid", "target":"navtab", "url":"resources/bjui/html/datagrid/datagrid-tree.jsp"},
-        {"id":"datagrid-search", "name":"搜索Datagrid", "target":"navtab", "url":"resources/bjui/html/datagrid/datagrid-search.jsp"},
-        {"id":"datagrid-template", "name":"Datagrid模板显示", "target":"navtab", "url":"resources/bjui/html/datagrid/datagrid-template.jsp"}
-    ]}
-]

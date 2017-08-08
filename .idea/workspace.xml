@@ -84,7 +84,7 @@
       <file leaf-file-name="UsersController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/xicp/a807966224/backs/controllers/UsersController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="12" selection-start="1222" selection-end="1222" vertical-scroll-proportion="0.0" vertical-offset="858" max-vertical-offset="2046">
+            <state line="39" column="12" selection-start="1222" selection-end="1222" vertical-scroll-proportion="0.0" vertical-offset="858" max-vertical-offset="2530">
               <folding />
             </state>
           </provider>
@@ -93,7 +93,7 @@
       <file leaf-file-name="MenusDao.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/xicp/a807966224/backs/daos/MenusDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="34" selection-start="558" selection-end="588" vertical-scroll-proportion="0.0" vertical-offset="418" max-vertical-offset="594">
+            <state line="19" column="0" selection-start="558" selection-end="588" vertical-scroll-proportion="0.0" vertical-offset="418" max-vertical-offset="968">
               <folding />
             </state>
           </provider>
@@ -102,7 +102,7 @@
       <file leaf-file-name="MenusService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/xicp/a807966224/backs/services/MenusService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="14" selection-start="1001" selection-end="1007" vertical-scroll-proportion="0.0" vertical-offset="704" max-vertical-offset="902">
+            <state line="32" column="14" selection-start="1001" selection-end="1007" vertical-scroll-proportion="0.0" vertical-offset="704" max-vertical-offset="1694">
               <folding />
             </state>
           </provider>
@@ -111,8 +111,10 @@
       <file leaf-file-name="MenuController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/xicp/a807966224/backs/controllers/MenuController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="0" selection-start="2315" selection-end="2315" vertical-scroll-proportion="1.0544355" vertical-offset="621" max-vertical-offset="1364">
-              <folding />
+            <state line="91" column="5" selection-start="2992" selection-end="2992" vertical-scroll-proportion="0.88709676" vertical-offset="1210" max-vertical-offset="3168">
+              <folding>
+                <element signature="e#1877#1885#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,22 +122,8 @@
       <file leaf-file-name="MenusMapper.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/xicp/a807966224/backs/mappers/MenusMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="53" selection-start="1653" selection-end="1653" vertical-scroll-proportion="0.0" vertical-offset="454" max-vertical-offset="880">
-              <folding>
-                <marker date="1495505392483" expanded="true" signature="324:612" placeholder="select menus..users..." />
-                <marker date="1495505392483" expanded="true" signature="701:984" placeholder="..." />
-                <marker date="1495505392483" expanded="true" signature="711:783" placeholder="SELECT id,me..menus..." />
-                <marker date="1495505392483" expanded="true" signature="711:971" placeholder="SELECT id,me..." />
-                <marker date="1495505392483" expanded="true" signature="806:877" placeholder="SELECT id,me..menus..." />
-                <marker date="1495505392483" expanded="true" signature="900:971" placeholder="SELECT id,me..menus..." />
-                <marker date="1495505392483" expanded="true" signature="1119:1272" placeholder="select fun.i..functions..." />
-                <marker date="1495505392483" expanded="true" signature="1162:1223" placeholder="select menus..menus..." />
-                <marker date="1495505392483" expanded="true" signature="1330:1554" placeholder="select fun.i..functions..." />
-                <marker date="1495505392483" expanded="true" signature="1373:1434" placeholder="select menus..menus..." />
-                <marker date="1495505392483" expanded="true" signature="1485:1532" placeholder="select id fr..menus..." />
-                <marker date="1495505392483" expanded="true" signature="1612:1790" placeholder="select fun.i..functions..." />
-                <marker date="1495505392483" expanded="true" signature="1655:1716" placeholder="select menus..menus..." />
-              </folding>
+            <state line="30" column="53" selection-start="1685" selection-end="1685" vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="2354">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -143,7 +131,7 @@
       <file leaf-file-name="menus.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/WEB-INF/pages/menus/menus.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="24" selection-start="2044" selection-end="2246" vertical-scroll-proportion="0.0" vertical-offset="798" max-vertical-offset="1474">
+            <state line="53" column="24" selection-start="2044" selection-end="2246" vertical-scroll-proportion="0.0" vertical-offset="1166" max-vertical-offset="4774">
               <folding />
             </state>
           </provider>
@@ -242,7 +230,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -370,32 +358,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sssm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sssm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="a807966224" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -631,7 +593,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1000,11 +962,12 @@
       <workItem from="1495414254522" duration="23729000" />
       <workItem from="1495499831364" duration="4782000" />
       <workItem from="1495540204932" duration="676000" />
+      <workItem from="1502192611111" duration="1147000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50982000" />
+    <option name="totallyTimeSpent" value="52129000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1038,7 +1001,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32931727" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29986614" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29986614" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1319,22 +1282,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/xicp/a807966224/backs/mappers/MenusMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="53" selection-start="1653" selection-end="1653" vertical-scroll-proportion="0.0" vertical-offset="454" max-vertical-offset="880">
-          <folding>
-            <marker date="1495505392483" expanded="true" signature="324:612" placeholder="select menus..users..." />
-            <marker date="1495505392483" expanded="true" signature="701:984" placeholder="..." />
-            <marker date="1495505392483" expanded="true" signature="711:783" placeholder="SELECT id,me..menus..." />
-            <marker date="1495505392483" expanded="true" signature="711:971" placeholder="SELECT id,me..." />
-            <marker date="1495505392483" expanded="true" signature="806:877" placeholder="SELECT id,me..menus..." />
-            <marker date="1495505392483" expanded="true" signature="900:971" placeholder="SELECT id,me..menus..." />
-            <marker date="1495505392483" expanded="true" signature="1119:1272" placeholder="select fun.i..functions..." />
-            <marker date="1495505392483" expanded="true" signature="1162:1223" placeholder="select menus..menus..." />
-            <marker date="1495505392483" expanded="true" signature="1330:1554" placeholder="select fun.i..functions..." />
-            <marker date="1495505392483" expanded="true" signature="1373:1434" placeholder="select menus..menus..." />
-            <marker date="1495505392483" expanded="true" signature="1485:1532" placeholder="select id fr..menus..." />
-            <marker date="1495505392483" expanded="true" signature="1612:1790" placeholder="select fun.i..functions..." />
-            <marker date="1495505392483" expanded="true" signature="1655:1716" placeholder="select menus..menus..." />
-          </folding>
+        <state line="30" column="53" selection-start="1685" selection-end="1685" vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="2354">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1342,22 +1291,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="23" selection-start="418" selection-end="418" vertical-scroll-proportion="0.83475786" vertical-offset="191" max-vertical-offset="1628">
           <folding>
-            <element signature="e#835#836#0" expanded="false" />
-            <element signature="e#867#868#0" expanded="false" />
-            <element signature="e#917#918#0" expanded="false" />
-            <element signature="e#959#960#0" expanded="false" />
-            <element signature="e#995#996#0" expanded="false" />
-            <element signature="e#1027#1028#0" expanded="false" />
-            <element signature="e#1077#1078#0" expanded="false" />
-            <element signature="e#1119#1120#0" expanded="false" />
             <element signature="e#1153#1154#0" expanded="false" />
-            <element signature="e#1183#1184#0" expanded="false" />
-            <element signature="e#1229#1230#0" expanded="false" />
-            <element signature="e#1267#1268#0" expanded="false" />
-            <element signature="e#1299#1300#0" expanded="false" />
-            <element signature="e#1327#1328#0" expanded="false" />
-            <element signature="e#1369#1370#0" expanded="false" />
-            <element signature="e#1403#1404#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1378,7 +1312,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/xicp/a807966224/backs/daos/MenusDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="34" selection-start="558" selection-end="588" vertical-scroll-proportion="0.0" vertical-offset="23" max-vertical-offset="418">
+        <state line="19" column="0" selection-start="558" selection-end="588" vertical-scroll-proportion="0.0" vertical-offset="418" max-vertical-offset="968">
           <folding />
         </state>
       </provider>
@@ -1404,8 +1338,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/xicp/a807966224/backs/controllers/MenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="0" selection-start="2315" selection-end="2315" vertical-scroll-proportion="1.0544355" vertical-offset="621" max-vertical-offset="1364">
-          <folding />
+        <state line="91" column="5" selection-start="2992" selection-end="2992" vertical-scroll-proportion="0.88709676" vertical-offset="1210" max-vertical-offset="3168">
+          <folding>
+            <element signature="e#1877#1885#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
