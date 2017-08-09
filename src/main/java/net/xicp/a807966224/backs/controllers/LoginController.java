@@ -46,6 +46,8 @@ public class LoginController extends BaseController{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+    private static final String menuLevel = "1";
 	
 	@Autowired
 	UsersService usersService;
@@ -92,7 +94,7 @@ public class LoginController extends BaseController{
 	@RequestMapping("/")
 	public String indexPage(HttpServletRequest request){
 		request.setAttribute("user", getPrincipal());
-        Set<Authorities> menus = usersService.findMenusByUsername(getPrincipal(),"1");
+        Set<Authorities> menus = usersService.findMenusByUsername(getPrincipal(),menuLevel);
         Users users = usersService.findByUsername(getPrincipal());
         request.setAttribute("menus", menus);
         List<Menu> list = usersService.getUserHasAuthByUserId(users.getId());//用户具有的操作权限

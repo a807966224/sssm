@@ -108,4 +108,13 @@
     <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">  
         <property name="configLocation" value="classpath:ehcache-setting.xml"></property>  
     </bean>
+
+    <!-- 存放application环境变量，使其在应用范围内生效 -->
+    <bean class="org.springframework.web.context.support.ServletContextAttributeExporter">
+        <property name="attributes">
+            <map>
+                <entry key="index_title" value="#{dbProps.index_title}"></entry>
+            </map>
+        </property>
+    </bean>
 </beans>

@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>用户列表</title>
+    <jsp:include page="../indexs/_headers.jsp" />
 </head>
 <body>
 <table class="table table-bordered" data-toggle="datagrid" data-options="{

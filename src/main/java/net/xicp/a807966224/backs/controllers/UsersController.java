@@ -37,7 +37,8 @@ public class UsersController extends BaseController{
 
 	@RequestMapping("/list")
 	public ModelAndView list(ModelAndView mv,HttpServletRequest request){
-        mv.addObject("excuteName",getAuthNames("2"));
+        String id = request.getParameter("id");
+        mv.addObject("excuteName",getAuthNames(id));
 		mv.setViewName("users/users_list");
 		return mv;
 	}

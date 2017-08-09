@@ -22,6 +22,10 @@ public class BaseController implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+    /**
+     * 通过安全框架获取系统登录人员用户名
+     * @return
+     */
 	public String getPrincipal(){
 		String userName = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -32,12 +36,22 @@ public class BaseController implements Serializable{
 		}
 		return userName;
 	}
-	
+
+    /**
+     * 获取项目名称
+     * @param request
+     * @return
+     */
 	public String getProjectName(HttpServletRequest request){
 		String proName = request.getContextPath();
 		return proName;
 	}
-	
+
+    /**
+     * 获取系统登录人员所具有菜单的相应功能按钮集合
+     * @param menuId    菜单id
+     * @return  add,edit,del
+     */
 	public String getAuthNames(String menuId){
 		Cache cache = cacheManager.getCache("userCache");
 		Element element = cache.get(menuId);
@@ -45,6 +59,10 @@ public class BaseController implements Serializable{
 		return authNames;
 	}
 
+    /**
+     * 通过安全框架获取已认证的用户名
+     * @return
+     */
     public String getCurrentUsername() {
         return SecurityContextHolder.getContext().getAuthentication().getName();
     }

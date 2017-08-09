@@ -45,7 +45,8 @@ public class RolesController extends BaseController{
 	
 	@RequestMapping("/list")
 	public ModelAndView list(ModelAndView mv,HttpServletRequest request){
-        mv.addObject("excuteName",getAuthNames("3"));
+        String id = request.getParameter("id");
+        mv.addObject("excuteName",getAuthNames(id));
 		mv.setViewName("roles/roles_list");
 		return mv;
 	}

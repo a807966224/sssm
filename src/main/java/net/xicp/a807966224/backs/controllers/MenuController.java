@@ -44,7 +44,7 @@ public class MenuController extends BaseController{
             map = new HashMap();
             map.put("target","navtab");
             map.put("id","menus_"+auth.getId());
-            map.put("url",getProjectName(request)+auth.getUrl());
+            map.put("url",getProjectName(request)+auth.getUrl()+"?id="+auth.getId());
             map.put("name",auth.getMenuname());
             datas.add(map);
         }
