@@ -3,6 +3,8 @@
 <%@ include file="../indexs/_headers.jsp"%>
 </head>
 <body>
-no access!==<a href="<%=request.getContextPath() %>">Return</a>
+no access!==
+<c:url var="logoutUrl" value="/logout" />
+<a href="${logoutUrl}">注销登陆</a>
 </body>
 </html>

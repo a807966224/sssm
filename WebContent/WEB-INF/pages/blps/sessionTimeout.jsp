@@ -4,10 +4,10 @@
 <script>
 function onInit(){
 		setTimeout(function(){
-			aa(1);
+			changeSs(1);
 		}, 1000);
 }
-function aa(i){
+function changeSs(i){
 	document.getElementById("divtimer").innerHTML=i+"s";
 	if(i == 1){
 		window.location.href="<%=request.getContextPath() %>";

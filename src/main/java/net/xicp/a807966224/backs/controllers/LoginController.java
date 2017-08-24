@@ -95,7 +95,13 @@ public class LoginController extends BaseController{
 	public String indexPage(HttpServletRequest request){
 		request.setAttribute("user", getPrincipal());
         Set<Authorities> menus = usersService.findMenusByUsername(getPrincipal(),menuLevel);
-        Users users = usersService.findByUsername(getPrincipal());
+        Users users = null;
+        try{
+            users = usersService.findByUsername(getPrincipal());
+        }catch(NullPointerException e){
+            e.printStackTrace();
+            return "redirect:/logout";
+        }
         request.setAttribute("menus", menus);
         List<Menu> list = usersService.getUserHasAuthByUserId(users.getId());//用户具有的操作权限
         for(Menu menu : list){

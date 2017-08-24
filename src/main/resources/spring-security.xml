@@ -10,13 +10,17 @@
     <security:http security="none" pattern="/none/**" />
 	<security:http security="none" pattern="/resources/**" />
 	<security:http security="none" pattern="/captcha*" />
+    <security:http security="none" pattern="/logout" />
 	<security:http auto-config="true">
         <!-- 表示匿名用户可以访问 -->
         <security:intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<security:intercept-url pattern="/Access_Denied" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<security:intercept-url pattern="/sessionTimeout" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 
-		<security:intercept-url pattern="/**" access="ROLE_USER,ROLE_ADMIN" />
+		<!--
+		    此处配置，可注掉，现在是通过有权限集合即可登录，登录后  通过表连接筛选所具有的菜单
+		    <security:intercept-url pattern="/**" access="ROLE_USER,ROLE_ADMIN" />
+		-->
 		
 		<security:form-login 
 				login-page="/login"

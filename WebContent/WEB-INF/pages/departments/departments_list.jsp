@@ -5,8 +5,7 @@
 
 	function zOnClick(event, treeId, treeNode) {
 		$("#id").val(treeNode.id);
-		$("#level").val(treeNode.level);
-		$("#menuForm").submit();
+		$("#departmentForm").submit();
 	};
     var setting = {
         data: {
@@ -16,7 +15,7 @@
         },
         async: {
     		enable: true,
-    		url: "<%=request.getContextPath()%>/menu/findMenus",
+    		url: "<%=request.getContextPath()%>/departments/findDepartmentTree",
     		dataType: "text"
     	},
         callback: {
@@ -24,7 +23,7 @@
         }
     };
 
-    var zNodes = ${menus};
+    var zNodes = ${departments};
 
     $(document).ready(function(){
         $.fn.zTree.init($("#treeMenu"), setting, zNodes);
@@ -54,24 +53,22 @@
 		}
 	}
 	function closeAddMenu_dialog(){
-		var zTree = $.fn.zTree.getZTreeObj("treeMenu");
-        console.log(zTree+"=========");
-//		var type = "refresh";
-//        zTree.reAsyncChildNodes(null, type);
-        zTree.refresh();
+		var zTree = $.fn.zTree.getZTreeObj("treeMenu"); 
+		type = "refresh";
+        zTree.reAsyncChildNodes(null, type);  
 	}
 	function updateMenu(){
 		var treeObj = $.fn.zTree.getZTreeObj("treeMenu");
 		var nodes = treeObj.getSelectedNodes();
 		if(nodes.length == 0){
-			alert('请选择菜单节点进行修改');
+			alert('请选择菜单节点进行添加');
 		}else{
 			BJUI.dialog({
 			    id:'addMenu_dialog',
 			    url:'<%=request.getContextPath()%>/menu/menuEdit',
-			    title:'修改菜单',
+			    title:'添加菜单',
 			    type:'POST',
-			    data:{"pId":nodes[0].pId,"pName":nodes[0].name,"level":nodes[0].level,"id":nodes[0].id},
+			    data:{"pId":nodes[0].id,"pName":nodes[0].name,"level":nodes[0].level,"id":nodes[0].id},
 			    width:'800',
 			    height:'500',
 			    onClose:'function(){closeAddMenu_dialog()}',
@@ -109,7 +106,7 @@
 			    data:{"menu_id":nodes[0].id},
 			    width:'800',
 			    height:'500',
-			    onClose:'function(){closeAddMenu_dialog();$("#menuForm").submit();}',
+			    onClose:'function(){closeAddMenu_dialog();$("#departmentForm").submit();}',
 			})
 		}
 	}
@@ -138,7 +135,7 @@
 			    data:{"id":id},
 			    width:'800',
 			    height:'500',
-			    onClose:'function(){closeAddMenu_dialog();$("#menuForm").submit();}',
+			    onClose:'function(){closeAddMenu_dialog();$("#departmentForm").submit();}',
 			})
 		}
 	}
@@ -164,7 +161,7 @@
 			$.post(url,param,function(result){
 				if(result){
 					closeAddMenu_dialog();
-					$("#menuForm").submit();
+					$("#departmentForm").submit();
 				}else{
 					
 				}
@@ -176,29 +173,32 @@
 <body>
 <div id="divLeft" style="display: inline;float: left;width:20%;height:100%;"><ul id="treeMenu" class="ztree" style="width:94%;height: 100%;background: #f0f6e4;;border: 1px solid #ddd;"></ul></div>
 <div id="divRigth" style="display: inline;float: left;width:80%;height: 100%;">
-    <form id="menuForm" data-toggle="ajaxsearch" data-options="{searchDatagrid:$.CurrentNavtab.find('#tablist')}">
-    	<input type='hidden' name="level" id="level" value="" />
+    <form id="departmentForm" data-toggle="ajaxsearch" data-options="{searchDatagrid:$.CurrentNavtab.find('#tablist')}">
     	<input type='hidden' name='id' id="id" value="" >
     </form>
     <table id="tablist" class="table table-bordered" data-toggle="datagrid" data-options="{
     height: '100%',
 	gridTitle: '操作列表',
-    dataUrl: '<%=request.getContextPath() %>/menu/pageJson',
+    dataUrl: '<%=request.getContextPath() %>/departments/pageJson',
     local: 'local',
     showToolbar: 'true',
     toolbarCustom:myButtons,
-    editMode: {dialog:{width:'800',height:500,title:'用户信息',mask:true}},
-    editUrl: '<%=request.getContextPath() %>/users/edit',
-    delUrl: '<%=request.getContextPath() %>/users/del',
+    editMode: {dialog:{width:'800',height:500,title:'部门信息',mask:true}},
+    editUrl: '<%=request.getContextPath() %>/departments/edit',
+    delUrl: '<%=request.getContextPath() %>/departments/del',
     delPK: 'id',
     columnResize: 'false'
 }">
         <thead>
         <tr>
             <th data-options="{name:'id',hide:'true'}">id</th>
-            <th data-options="{name:'funenname',finalWidth:70,align:'center',width:120}" >操作编码</th>
-            <th data-options="{name:'funchname',finalWidth:120,align:'center',width:120}">操作名称</th>
-            <th data-options="{name:'name',finalWidth:120,align:'center',width:120}">所属菜单</th>
+            <th data-options="{name:'code',finalWidth:70,align:'center',width:120}" >部门编码</th>
+            <th data-options="{name:'name',finalWidth:120,align:'center',width:120}">部门名称</th>
+            <th data-options="{name:'parentDepartmentName',finalWidth:120,align:'center',width:120}">上级部门</th>
+            <th data-options="{name:'deptBuildDate',finalWidth:120,align:'center',width:120}">成立时间</th>
+            <th data-options="{name:'deptTell',finalWidth:120,align:'center',width:120}">联系方式</th>
+            <th data-options="{name:'deptAddr',finalWidth:120,align:'center',width:120}">部门地址</th>
+            <th data-options="{name:'description',finalWidth:120,align:'center',width:120}">描述</th>
         </tr>
         </thead>
     </table>

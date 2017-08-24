@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+  "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="net.xicp.a807966224.backs.daos.DepartmentDao">
+
+    <resultMap id="DepartmentResultMap" type="net.xicp.a807966224.backs.beans.Department">
+        <result property="id" column="id" />
+        <result property="code" column="code" />
+        <result property="name" column="name" />
+        <result property="pId" column="pid" />
+        <result property="deptAddr" column="dept_addr" />
+        <result property="deptBuildDate" column="dept_build_date" />
+        <result property="description" column="description" />
+        <result property="deptTell" column="dept_tell" />
+        <result property="lft" column="lft" />
+        <result property="rgt" column="rgt" />
+        <result property="sort" column="sort" />
+        <result property="parentDepartmentName" column="parentDepartmentName" />
+	</resultMap>
+
+    <sql id="selectPre">
+        select d.*,(select department.name from department where department.id = d.pid) as parentDepartmentName from department d where d.lft between #{department.lft} and #{department.rgt} order by d.sort asc
+    </sql>
+    <select id="findAllDepartments" resultMap="DepartmentResultMap" parameterType="net.xicp.a807966224.backs.beans.Department">
+      <include refid="selectPre"/>
+    </select>
+
+    <select id="getById" resultMap="DepartmentResultMap" parameterType="long">
+      select * from department d where d.id = #{id}
+    </select>
+
+    <select id="findDepartmentTree" resultMap="DepartmentResultMap">
+        select * from department
+    </select>
+
+
+</mapper>

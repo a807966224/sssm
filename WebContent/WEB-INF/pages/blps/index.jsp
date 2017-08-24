@@ -4,12 +4,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh">
 <head>
+    <c:set var="_title" value="${index_title}" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>管理系统</title>
-    <meta name="Keywords" content="管理系统"/>
-    <meta name="Description" content="管理系统"/>
+    <title>${_title}</title>
+    <meta name="Keywords" content="${_title}"/>
+    <meta name="Description" content="${_title}"/>
     <!-- bootstrap - css -->
     <link href="<%=request.getContextPath() %>/resources/bjui/B-JUI/themes/css/bootstrap.css" rel="stylesheet">
     <!-- core - css -->
@@ -158,6 +159,7 @@
         </div>
         <nav class="collapse navbar-collapse" id="bjui-top-collapse">
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">${_title}</a></li>
                 <li class="datetime"><a><span id="bjui-date">0000/00/00</span> <span id="bjui-clock">00:00:00</span></a></li>
                 <li><a href="#">账号：${user}</a></li>
                 <%--<li><a href="#">角色：${user}</a></li>--%>
@@ -201,7 +203,7 @@
                         <a href="<%=request.getContextPath() %>/menu/submenus?id=${menu.id}" data-toggle="sidenav" data-id-key="targetid">${menu.menuname}</a>
                     </li>
                 </c:forEach>
-                <li class="active">
+                <li>
                 <a href="<%=request.getContextPath() %>/resources/bjui/json/menu-form.json" data-toggle="sidenav" data-id-key="targetid">表单相关</a>
                 </li>
                 <li>
@@ -209,6 +211,9 @@
                 </li>
                 <li>
                     <a href="<%=request.getContextPath() %>/resources/bjui/json/menu-datagrid.json" data-toggle="sidenav" data-id-key="targetid">数据表格(Datagrid)</a>
+                </li>
+                <li class="active">
+                    <a href="<%=request.getContextPath() %>/resources/bjui/json/menu-form.json" data-toggle="sidenav" data-id-key="targetid">平台状况</a>
                 </li>
                 <li>
                     <a href="javascript:;" data-toggle="sidenav" data-tree="true" data-tree-options="{onClick:MainMenuClick}" data-id-key="targetid">待续……</a>
