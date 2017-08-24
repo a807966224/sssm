@@ -125,6 +125,15 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>kaptcha</servlet-name>
+        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>kaptcha</servlet-name>
+        <url-pattern>/kaptcha.jpg</url-pattern>
+    </servlet-mapping>
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -138,12 +147,18 @@
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
 
+    <!-- 此监听器可保证同一账号登录限制问题 -->
+    <listener>
+        <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+    </listener>
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath:spring-configs.xml,classpath:spring-security.xml
         </param-value>
     </context-param>
+
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -152,18 +167,7 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    <!-- 此监听器可保证同一账号登录限制问题 -->
-    <listener>
-        <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
-    </listener>
-    <servlet>
-        <servlet-name>kaptcha</servlet-name>
-        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>kaptcha</servlet-name>
-        <url-pattern>/kaptcha.jpg</url-pattern>
-    </servlet-mapping>
+
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>

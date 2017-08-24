@@ -46,7 +46,7 @@
 			    url:'<%=request.getContextPath()%>/menu/menuEdit',
 			    title:'添加菜单',
 			    type:'POST',
-			    data:{"pId":nodes[0].id,"pName":nodes[0].name,"level":nodes[0].level},
+			    data:{"pId":nodes[0].pId,"pName":nodes[0].name,"level":nodes[0].level},
 			    width:'800',
 			    height:'500',
 			    onClose:'function(){closeAddMenu_dialog()}',
@@ -55,7 +55,6 @@
 	}
 	function closeAddMenu_dialog(){
 		var zTree = $.fn.zTree.getZTreeObj("treeMenu");
-        console.log(zTree+"=========");
 //		var type = "refresh";
 //        zTree.reAsyncChildNodes(null, type);
         zTree.refresh();
