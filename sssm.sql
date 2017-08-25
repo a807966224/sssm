@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50712
+Source Server Version : 50636
 Source Host           : localhost:3306
 Source Database       : sssm
 
 Target Server Type    : MYSQL
-Target Server Version : 50712
+Target Server Version : 50636
 File Encoding         : 65001
 
-Date: 2017-07-03 21:40:22
+Date: 2017-08-25 16:58:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -91,6 +91,30 @@ INSERT INTO `authorities` VALUES ('44', '来来来');
 INSERT INTO `authorities` VALUES ('45', 'user');
 
 -- ----------------------------
+-- Table structure for `department`
+-- ----------------------------
+DROP TABLE IF EXISTS `department`;
+CREATE TABLE `department` (
+  `id` bigint(20) NOT NULL DEFAULT '0',
+  `code` varchar(32) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `pid` bigint(20) DEFAULT NULL,
+  `dept_addr` varchar(200) DEFAULT NULL,
+  `dept_build_date` date DEFAULT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  `dept_tell` varchar(32) DEFAULT NULL,
+  `lft` int(10) DEFAULT NULL,
+  `rgt` int(10) DEFAULT NULL,
+  `sort` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of department
+-- ----------------------------
+INSERT INTO `department` VALUES ('0', 'ROOT_NODE', 'XXX', '-1', null, null, null, null, '0', '1', '0');
+
+-- ----------------------------
 -- Table structure for `functions`
 -- ----------------------------
 DROP TABLE IF EXISTS `functions`;
@@ -145,21 +169,19 @@ CREATE TABLE `menus` (
   `parent` varchar(10) DEFAULT NULL,
   `level` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menus
 -- ----------------------------
-INSERT INTO `menus` VALUES ('0', '菜单根部', null, '-1', '0');
 INSERT INTO `menus` VALUES ('1', '系统设置', null, '0', '1');
 INSERT INTO `menus` VALUES ('2', '用户管理', '/users/list', '1', '2');
 INSERT INTO `menus` VALUES ('3', '角色管理', '/roles/list', '1', '2');
 INSERT INTO `menus` VALUES ('4', '菜单管理', '/menu/toAll', '1', '2');
-INSERT INTO `menus` VALUES ('5', '123', '11', '1', '2');
-INSERT INTO `menus` VALUES ('6', '123', '234', '1', '2');
-INSERT INTO `menus` VALUES ('7', '435', '345', '1', '2');
 INSERT INTO `menus` VALUES ('12', '啊啊', '11', '0', '1');
-INSERT INTO `menus` VALUES ('13', '11', '11', '12', '2');
+INSERT INTO `menus` VALUES ('13', '1111', '111112', '12', '2');
+INSERT INTO `menus` VALUES ('15', '部门管理', '/departments/list', '1', '2');
+INSERT INTO `menus` VALUES ('17', '手机报修', '3331111', '1', '2');
 
 -- ----------------------------
 -- Table structure for `users`
@@ -169,24 +191,33 @@ CREATE TABLE `users` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `state` varchar(5) NOT NULL,
+  `code` varchar(50) DEFAULT NULL,
+  `state` varchar(5) NOT NULL COMMENT '1正常，0停用',
+  `sex` int(2) DEFAULT NULL COMMENT '1男，0女',
+  `dept_id` bigint(20) DEFAULT NULL,
+  `dept_name` varchar(50) DEFAULT NULL,
+  `cornet` varchar(50) DEFAULT NULL COMMENT '短号',
+  `birth` varchar(50) DEFAULT NULL,
+  `education` varchar(50) DEFAULT NULL,
+  `car_num` varchar(50) DEFAULT NULL,
+  `address` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', 'admin', 'f2abb8c558d18a771c4d090c64d0eaa1ea8a6079d51f1c2b462e4fd9c51c5050957fde5c1a9b085a', '1');
-INSERT INTO `users` VALUES ('3', '11', '111', '1');
-INSERT INTO `users` VALUES ('4', '1111', '2212', '1');
-INSERT INTO `users` VALUES ('5', '99', '99', '1');
-INSERT INTO `users` VALUES ('6', '2323', '2323', '1');
-INSERT INTO `users` VALUES ('7', 'aasdf', 'sadfasdf', '1');
-INSERT INTO `users` VALUES ('8', 'asdfasdf', 'asdfasdf', '1');
-INSERT INTO `users` VALUES ('9', '123', '234', '1');
-INSERT INTO `users` VALUES ('10', 'asdsfasdf', 'sadfasdf', '1');
-INSERT INTO `users` VALUES ('11', '777', '05830047b5925a5b95e1201609d2536604ffea0efca014246aae8d30c22798f77eef9eea3bfb9c2a', '1');
-INSERT INTO `users` VALUES ('12', '000', '3d33edf8860d9ed3b9555a67c3ef39d1a6b036f7a483f104f327889ae95bca0ec04656a0c2f0d21b', '1');
-INSERT INTO `users` VALUES ('13', '阿道夫333', '4fb297d99f138a4880efcc2907a1099aabec06e7b96af3da0e75ced41728a074414acc8b65cc6cb2', '1');
-INSERT INTO `users` VALUES ('14', '来', '1bd0cf37d38bfaa691d57c49decab74d60d5cdb02b8fc05777f081d0dcdcc681c49e472e8065f4e2', '1');
-INSERT INTO `users` VALUES ('16', 'test', '8bf9c1fb44222613cec4ca2b8dec9731f5d61b03e964312e7ee74a2a176e538e978b48cac9dae5b8', '1');
+INSERT INTO `users` VALUES ('1', 'admin', 'f2abb8c558d18a771c4d090c64d0eaa1ea8a6079d51f1c2b462e4fd9c51c5050957fde5c1a9b085a', null, '1', null, null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('3', '11', '111', null, '1', null, null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('4', '1111', '2212', null, '1', null, null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('5', '99', '99', null, '1', null, null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('6', '2323', '2323', null, '1', null, null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('7', 'aasdf', 'sadfasdf', null, '1', null, null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('8', 'asdfasdf', 'asdfasdf', null, '1', null, null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('9', '123', '234', null, '1', null, null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('10', 'asdsfasdf', 'sadfasdf', null, '1', null, null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('11', '777', 'f2abb8c558d18a771c4d090c64d0eaa1ea8a6079d51f1c2b462e4fd9c51c5050957fde5c1a9b085a', null, '1', null, null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('12', '000', '3d33edf8860d9ed3b9555a67c3ef39d1a6b036f7a483f104f327889ae95bca0ec04656a0c2f0d21b', null, '1', null, null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('13', '阿道夫333', '4fb297d99f138a4880efcc2907a1099aabec06e7b96af3da0e75ced41728a074414acc8b65cc6cb2', null, '1', null, null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('14', '来', '1bd0cf37d38bfaa691d57c49decab74d60d5cdb02b8fc05777f081d0dcdcc681c49e472e8065f4e2', null, '1', null, null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('16', 'test', 'f2abb8c558d18a771c4d090c64d0eaa1ea8a6079d51f1c2b462e4fd9c51c5050957fde5c1a9b085a', null, '1', null, null, null, null, null, null, null, null);
