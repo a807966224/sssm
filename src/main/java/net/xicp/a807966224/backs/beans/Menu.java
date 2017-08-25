@@ -27,6 +27,15 @@ public class Menu extends BaseBeans{
     private int type;
     private boolean open;
     private boolean checked;
+    private boolean isParent;
+
+    public boolean isParent() {
+        return isParent;
+    }
+
+    public void setParent(boolean isParent) {
+        this.isParent = isParent;
+    }
 
     public String getName() {
         return name;

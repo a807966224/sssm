@@ -79,6 +79,12 @@ function changeMessage(){
     if(error == "1"){
         $("#errmessage").css("display","block");
         $("#errmessage").html("账号或密码错误！");
+    }else if(error == '3'){
+        $("#errmessage").css("display","block");
+        $("#errmessage").html("此账号其它用户已登录！");
+    }else if(error == '2'){
+        $("#errmessage").css("display","block");
+        $("#errmessage").html("验证码错误！");
     }
 }
 function toLogin(){

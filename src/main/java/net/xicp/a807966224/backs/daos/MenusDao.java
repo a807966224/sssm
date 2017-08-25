@@ -14,7 +14,7 @@ public interface MenusDao {
 	
     List<Authorities> findSubMenusByMenuid(@Param("parent") String parent,@Param("username") String username);
 
-    List<Menu> findMenus();
+    List<Menu> findMenus(Menu menu);
 
     List<Menu> findOptionsByMenuid(@Param("level") String level,@Param("id") Long id);
 

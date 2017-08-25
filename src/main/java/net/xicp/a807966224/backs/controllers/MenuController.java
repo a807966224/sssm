@@ -53,23 +53,20 @@ public class MenuController extends BaseController{
 
     @RequestMapping("toAll")
     public String toAll(Model model){
-        List<Menu> datas = menusService.findMenus();
-        List<String> menus = new ArrayList<String>();
-        for(int i=0,j=datas.size();i<j;i++){
-        	String str = new String("{id:"+datas.get(i).getId()+",name:'"+datas.get(i).getName()+"',pId:"+datas.get(i).getpId()+"}");
-        	menus.add(str);
-        }
-        model.addAttribute("menus",menus);
+//        List<Menu> datas = menusService.findMenus();
+//        List<String> menus = new ArrayList<String>();
+//        for(int i=0,j=datas.size();i<j;i++){
+//        	String str = new String("{id:"+datas.get(i).getId()+",name:'"+datas.get(i).getName()+"',pId:"+datas.get(i).getpId()+"}");
+//        	menus.add(str);
+//        }
+//        model.addAttribute("menus",menus);
         return "menus/menus";
     }
 
     @RequestMapping("findMenus")
     @ResponseBody
-    public List<Menu> findMenus(){
-    	List<Menu> datas = menusService.findMenus();
-    	for(Menu menu :datas){
-    		menu.setUrl("");
-    	}
+    public List<Menu> findMenus(Menu menu){
+    	List<Menu> datas = menusService.findMenus(menu);
         return datas;
     }
     

@@ -24,7 +24,7 @@
 		
 		<security:form-login 
 				login-page="/login"
-				authentication-failure-url="/captchaErr?error=1"
+				authentication-failure-url="/captchaErr?error=3"
 				authentication-success-handler-ref="customSuccessHandler"
 				username-parameter="ssoId"
 				password-parameter="password" />

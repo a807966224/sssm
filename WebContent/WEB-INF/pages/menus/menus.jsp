@@ -7,27 +7,43 @@
 		$("#id").val(treeNode.id);
 		$("#level").val(treeNode.level);
 		$("#menuForm").submit();
-	};
+	}
+
     var setting = {
+        async: {
+            enable: true,
+            url: getUrl,
+            dataFilter: filter
+        },
         data: {
             simpleData: {
                 enable: true
             }
         },
-        async: {
-    		enable: true,
-    		url: "<%=request.getContextPath()%>/menu/findMenus",
-    		dataType: "text"
-    	},
         callback: {
-        	onClick:zOnClick
+            onClick:zOnClick
         }
     };
 
-    var zNodes = ${menus};
+    var zNodes =[
+        {name:"菜单根部", id:"0",pId:"-1",isParent:true}
+    ];
 
+    function getUrl(treeId, treeNode) {
+        var param = "pId="+treeNode.id;
+        return "<%=request.getContextPath()%>/menu/findMenus?" + param;
+    }
+    function filter(treeId, parentNode, childNodes) {
+        if (!childNodes) return null;
+        for (var i=0, l=childNodes.length; i<l; i++) {
+            childNodes[i].name = childNodes[i].name.replace(/\.n/g, '.');
+            childNodes[i].isParent = childNodes[i].level=='1'?true:false;
+        }
+        return childNodes;
+    }
     $(document).ready(function(){
         $.fn.zTree.init($("#treeMenu"), setting, zNodes);
+
     });
     var myButtons = '<button type="button" class="btn btn-blue" data-icon="plus" onclick="addMenu();"><i class="fa fa-plus"></i> 添加菜单</button>'
     	+' <button type="button" class="btn btn-green" data-icon="edit" onclick="updateMenu();"><i class="fa fa-edit"></i> 编辑菜单</button>'
@@ -55,12 +71,11 @@
 	}
 	function closeAddMenu_dialog(){
 		var zTree = $.fn.zTree.getZTreeObj("treeMenu");
-//		var type = "refresh";
-//        zTree.reAsyncChildNodes(null, type);
-        zTree.refresh();
+		var type = "refresh";
+        zTree.reAsyncChildNodes(null, type);
 	}
 	function updateMenu(){
-		var treeObj = $.fn.zTree.getZTreeObj("treeMenu");
+        var treeObj = $.fn.zTree.getZTreeObj("treeMenu");
 		var nodes = treeObj.getSelectedNodes();
 		if(nodes.length == 0){
 			alert('请选择菜单节点进行修改');
@@ -114,7 +129,6 @@
 	}
 	function updateOpt(){
 		var s_row = $("#tablist").data('selectedTrs');
-		var s_row1 = $("#tablist").data('selectedDatas')
 		if(s_row == null){
 			alert('请选择操作行');
 		}
@@ -143,7 +157,6 @@
 	}
 	function delOpt(){
 		var s_row = $("#tablist").data('selectedTrs');
-		var s_row1 = $("#tablist").data('selectedDatas')
 		if(s_row == null){
 			alert('请选择操作行');
 		}

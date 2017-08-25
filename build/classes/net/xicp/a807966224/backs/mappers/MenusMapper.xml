@@ -12,12 +12,20 @@
         and parent = #{parent} and users.username = #{username} and users.state = '1' order by menus.id desc
 	</select>
 
-    <select id="findMenus" resultType="net.xicp.a807966224.backs.beans.Menu">
-        SELECT id,menuname name,url,parent pId,level FROM menus where level = 0
+    <select id="findMenus" resultType="net.xicp.a807966224.backs.beans.Menu" parameterType="net.xicp.a807966224.backs.beans.Menu" >
+        select t.* from (SELECT id,menuname name,'' url,parent pId,level,'true' isParent FROM menus where level = 0
         union
-        SELECT id,menuname name,url,parent pId,level FROM menus where level = 1
+        SELECT id,menuname name,'' url,parent pId,level,'true' isParent FROM menus where level = 1
         union
-        SELECT id,menuname name,url,parent pId,level FROM menus where level = 2
+        SELECT id,menuname name,'' url,parent pId,level,'false' isParent FROM menus where level = 2) as t
+
+        <where>
+            <if test="pId != null">
+                t.pId = #{pId}
+            </if>
+        </where>
+
+        order by t.id asc
     </select>
 
     <select id="findOptionsByMenuid" resultType="net.xicp.a807966224.backs.beans.Menu">

@@ -23,8 +23,8 @@ public class MenusService {
         return menus;
     }
 
-    public List<Menu> findMenus(){
-        List<Menu> list = menusDao.findMenus();
+    public List<Menu> findMenus(Menu menu){
+        List<Menu> list = menusDao.findMenus(menu);
         return list;
     }
 
