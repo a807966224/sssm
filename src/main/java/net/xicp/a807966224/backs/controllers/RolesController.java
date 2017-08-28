@@ -154,7 +154,7 @@ public class RolesController extends BaseController{
 				for(String m : m_ss){
 					authorities = new Authorities();
 					authorities.setAuthId(Roles.getId()+"");
-					authorities.setType("1");
+					authorities.setType("1");//菜单
 					authorities.setMenuId(m);
 					authoritiesSerivce.insertAms(authorities);
 				}
@@ -163,7 +163,7 @@ public class RolesController extends BaseController{
 				for(String o : o_ss){
 					authorities = new Authorities();
 					authorities.setAuthId(Roles.getId()+"");
-					authorities.setType("2");
+					authorities.setType("2");//操作
 					authorities.setMenuId(o);
 					authoritiesSerivce.insertAms(authorities);
 				}
